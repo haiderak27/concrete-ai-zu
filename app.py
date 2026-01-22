@@ -1,5 +1,5 @@
 # =============================================
-# CONCRETE INTELLIGENCE - EXPO PROFESSIONAL
+# CONCRETE INTELLIGENCE - CLEAN EXPO VERSION
 # Ziauddin University Civil Engineering
 # Build Asia Expo 2026 - Karachi, Pakistan
 # =============================================
@@ -15,144 +15,85 @@ from datetime import datetime
 # PAGE CONFIG
 # =============================================
 st.set_page_config(
-    page_title="Concrete Intelligence | Ziauddin University",
+    page_title="Concrete Intelligence",
     page_icon="🏗️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # =============================================
-# MINIMAL PROFESSIONAL CSS
+# MINIMAL CSS - CLEAN & PROFESSIONAL
 # =============================================
 st.markdown("""
 <style>
-    /* Clean professional background */
+    /* Clean background */
     .stApp {
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
     }
     
-    /* Main content area */
-    .main-content {
+    /* Only ONE main container */
+    .main-container {
         background: white;
-        border-radius: 12px;
-        padding: 2.5rem;
-        margin: 1.5rem auto;
+        border-radius: 10px;
+        padding: 2rem;
+        margin: 1rem auto;
         max-width: 1400px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e2e8f0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
-    /* Professional headers */
-    .main-header {
+    /* Professional title */
+    .main-title {
         text-align: center;
-        color: #1e293b;
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.5px;
-    }
-    
-    .sub-header {
-        text-align: center;
-        color: #64748b;
-        font-size: 1.4rem;
-        font-weight: 500;
-        margin-bottom: 2.5rem;
-        line-height: 1.5;
-    }
-    
-    .section-header {
-        color: #1e293b;
-        font-size: 1.8rem;
+        color: #2c3e50;
+        font-size: 2.8rem;
         font-weight: 700;
-        margin: 2rem 0 1.5rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 3px solid #3b82f6;
+        margin-bottom: 0.5rem;
     }
     
-    /* Clean sliders */
-    .stSlider {
-        margin: 1.2rem 0;
+    /* Clean subtitle */
+    .subtitle {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
     }
     
-    /* Professional buttons */
-    .stButton > button {
-        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    /* Subtle section divider */
+    .section {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+    }
+    
+    /* Clean button */
+    .stButton>button {
+        background: #3498db;
         color: white;
         border: none;
-        border-radius: 10px;
-        padding: 1rem 2.5rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        transition: all 0.3s;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-    }
-    
-    /* Clean metrics */
-    .stMetric {
-        background: #f8fafc;
-        padding: 1.2rem;
-        border-radius: 10px;
-        border-left: 4px solid #3b82f6;
-    }
-    
-    /* University badge */
-    .uni-badge {
-        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-        color: white;
-        padding: 0.6rem 1.2rem;
-        border-radius: 20px;
-        font-weight: 600;
-        display: inline-block;
-        margin: 0.3rem;
-        font-size: 0.95rem;
-    }
-    
-    /* Expo badge */
-    .expo-badge {
-        background: linear-gradient(135deg, #059669 0%, #047857 100%);
-        color: white;
-        padding: 0.6rem 1.2rem;
-        border-radius: 20px;
-        font-weight: 600;
-        display: inline-block;
-        margin: 0.3rem;
-        font-size: 0.95rem;
-    }
-    
-    /* Clean divider */
-    .custom-divider {
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-        margin: 2rem 0;
-    }
-    
-    /* Info boxes */
-    .info-box {
-        background: #f0f9ff;
-        border-left: 4px solid #3b82f6;
-        padding: 1.2rem;
         border-radius: 8px;
-        margin: 1rem 0;
-    }
-    
-    /* High contrast for readability */
-    .stTextInput > div > div > input,
-    .stNumberInput > div > div > input {
+        padding: 0.8rem 2rem;
         font-size: 1.1rem;
-        font-weight: 500;
+        font-weight: 600;
     }
     
-    /* Remove streamlit default spacing issues */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+    .stButton>button:hover {
+        background: #2980b9;
+    }
+    
+    /* Clean metric display */
+    .metric-box {
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #eaeaea;
+    }
+    
+    /* Remove excessive white boxes from streamlit */
+    div[data-testid="stVerticalBlock"] > div {
+        background: transparent !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -168,207 +109,146 @@ def load_model():
         feature_names = joblib.load('feature_names.pkl')
         return model, feature_names
     except Exception as e:
-        st.error(f"Model loading error: {str(e)}")
+        st.error(f"Error loading model: {str(e)}")
         return None, None
 
 model, feature_names = load_model()
 
 # =============================================
-# SIDEBAR - CLEAN & INFORMATIVE
+# SIDEBAR - CLEAN & SIMPLE
 # =============================================
 with st.sidebar:
-    # University Logo Area
-    st.markdown("<div style='text-align: center; margin-bottom: 2rem;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='color: #1d4ed8;'>🏗️</h2>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: #1e293b; margin: 0;'>Concrete Intelligence</h3>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-    
+    st.markdown("## 🏗️ Concrete Intelligence")
     st.markdown("---")
     
-    # University Info
     st.markdown("### 🏛️ Ziauddin University")
     st.markdown("**Civil Engineering Department**")
-    st.markdown("<small style='color: #64748b;'>Karachi, Pakistan</small>", unsafe_allow_html=True)
+    st.markdown("*Karachi, Pakistan*")
     
     st.markdown("---")
     
-    # Expo Info
     st.markdown("### 🎪 Build Asia Expo 2026")
-    st.markdown("<small style='color: #059669; font-weight: 600;'>Live Demonstration</small>", unsafe_allow_html=True)
+    st.markdown("**Live AI Demonstration**")
     
     st.markdown("---")
     
-    # Model Status
     if model is not None:
-        st.success("**✅ AI Model Active**")
+        st.success("✅ **AI Model Active**")
         col1, col2 = st.columns(2)
         with col1:
-            st.metric("Accuracy", "87.6%", delta="R²")
+            st.metric("Accuracy", "87.6%")
         with col2:
             st.metric("Error", "±5.7 MPa")
     else:
-        st.error("**❌ Model Not Loaded**")
+        st.error("❌ Model Not Loaded")
     
     st.markdown("---")
-    
-    # Quick Links
-    st.markdown("### 📱 Quick Access")
-    st.markdown("<div class='info-box'>", unsafe_allow_html=True)
-    st.markdown("**Scan QR Code**")
-    st.markdown("<small style='color: #64748b;'>concrete-ai-zu.streamlit.app</small>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("📱 **Scan QR Code**")
+    st.caption("concrete-ai-zu.streamlit.app")
 
 # =============================================
-# MAIN CONTENT - PROFESSIONAL LAYOUT
+# MAIN CONTENT - CLEAN LAYOUT
 # =============================================
 
-# HEADER SECTION
-st.markdown("<h1 class='main-header'>CONCRETE INTELLIGENCE</h1>", unsafe_allow_html=True)
-st.markdown("<p class='sub-header'>AI-Powered Concrete Strength Prediction & Optimization Platform</p>", unsafe_allow_html=True)
+# HEADER
+st.markdown("<h1 class='main-title'>🧠 CONCRETE INTELLIGENCE</h1>", unsafe_allow_html=True)
+st.markdown("<p class='subtitle'>AI-Powered Concrete Strength Prediction System</p>", unsafe_allow_html=True)
 
-# BADGES FOR QUICK INFO
+# STATS BADGES (Simple row)
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.markdown("<div class='uni-badge'>🏛️ Ziauddin University</div>", unsafe_allow_html=True)
+    st.metric("Accuracy", "87.6%", "R² Score")
 with col2:
-    st.markdown("<div class='expo-badge'>🎪 Expo 2026</div>", unsafe_allow_html=True)
+    st.metric("Error", "±5.7 MPa")
 with col3:
-    st.markdown("<div class='uni-badge'>🤖 AI Model: 87.6%</div>", unsafe_allow_html=True)
+    st.metric("Samples", "1,030+")
 with col4:
-    st.markdown("<div class='expo-badge'>📊 1,030+ Samples</div>", unsafe_allow_html=True)
+    st.metric("University", "Ziauddin")
 
-# MAIN CONTENT AREA
-st.markdown("<div class='main-content'>", unsafe_allow_html=True)
+# MAIN CONTAINER (ONE box only)
+st.markdown("<div class='main-container'>", unsafe_allow_html=True)
 
 # =============================================
-# CONCRETE MIX DESIGN SECTION
+# INPUT SECTION - CLEAN & ORGANIZED
 # =============================================
-st.markdown("<h2 class='section-header'>Design Your Concrete Mix</h2>", unsafe_allow_html=True)
+st.markdown("## 📊 Design Your Concrete Mix")
 
-# Two column layout for inputs
-col_left, col_right = st.columns(2)
+# Two columns for inputs
+col1, col2 = st.columns(2)
 
-with col_left:
-    st.markdown("#### Cementitious Materials")
-    cement = st.slider("**Cement** (kg/m³)", 100, 500, 300, 
-                      help="Primary binding material - Most important for strength")
-    water = st.slider("**Water** (kg/m³)", 100, 250, 180,
-                     help="Critical for workability - Affects water-cement ratio")
-    blast_slag = st.slider("**Blast Furnace Slag** (kg/m³)", 0, 200, 50,
-                          help="Supplementary material - Improves durability")
-    fly_ash = st.slider("**Fly Ash** (kg/m³)", 0, 150, 30,
-                       help="Pozzolanic material - Enhances workability")
+with col1:
+    st.markdown("### Cementitious Materials")
+    cement = st.slider("**Cement** (kg/m³)", 100, 500, 300)
+    water = st.slider("**Water** (kg/m³)", 100, 250, 180)
+    blast_slag = st.slider("**Blast Furnace Slag** (kg/m³)", 0, 200, 50)
+    fly_ash = st.slider("**Fly Ash** (kg/m³)", 0, 150, 30)
 
-with col_right:
-    st.markdown("#### Aggregates & Admixtures")
-    superplasticizer = st.slider("**Superplasticizer** (kg/m³)", 0.0, 20.0, 5.0, 0.5,
-                                help="High-range water reducer - Improves flow")
-    coarse_agg = st.slider("**Coarse Aggregate** (kg/m³)", 500, 1200, 900,
-                          help="20mm crushed stone - Provides bulk and strength")
-    fine_agg = st.slider("**Fine Aggregate** (kg/m³)", 500, 1000, 700,
-                        help="Natural sand - Fills voids and improves workability")
-    age = st.slider("**Curing Age** (days)", 1, 90, 28,
-                   help="Testing age - Standard is 28 days")
+with col2:
+    st.markdown("### Aggregates & Admixtures")
+    superplasticizer = st.slider("**Superplasticizer** (kg/m³)", 0.0, 20.0, 5.0, 0.5)
+    coarse_agg = st.slider("**Coarse Aggregate** (kg/m³)", 500, 1200, 900)
+    fine_agg = st.slider("**Fine Aggregate** (kg/m³)", 500, 1000, 700)
+    age = st.slider("**Curing Age** (days)", 1, 90, 28)
 
-# Quick Preset Buttons
-st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
-st.markdown("#### ⚡ Quick Preset Mixes")
-
+# Quick Presets
+st.markdown("### ⚡ Quick Presets")
 preset_col1, preset_col2, preset_col3 = st.columns(3)
-
 with preset_col1:
-    if st.button("**🏠 Residential Mix**\nGrade 25 MPa", use_container_width=True):
+    if st.button("🏠 Residential (Grade 25)", use_container_width=True):
         st.session_state.cement = 300
         st.session_state.water = 180
-        st.session_state.age = 28
-
 with preset_col2:
-    if st.button("**🏢 Commercial Mix**\nGrade 35 MPa", use_container_width=True):
+    if st.button("🏢 Commercial (Grade 35)", use_container_width=True):
         st.session_state.cement = 350
         st.session_state.water = 175
-        st.session_state.age = 28
-
 with preset_col3:
-    if st.button("**🌉 Structural Mix**\nGrade 50 MPa", use_container_width=True):
+    if st.button("🌉 Structural (Grade 50)", use_container_width=True):
         st.session_state.cement = 400
         st.session_state.water = 160
-        st.session_state.age = 28
 
-# =============================================
-# REAL-TIME ANALYSIS SECTION
-# =============================================
-st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
-st.markdown("<h2 class='section-header'>Real-Time Analysis</h2>", unsafe_allow_html=True)
+# Real-time Analysis
+st.markdown("---")
+st.markdown("## 📈 Real-Time Analysis")
 
-# Calculate key metrics
 wc_ratio = water / cement if cement > 0 else 0
-total_powder = cement + blast_slag + fly_ash
-total_aggregate = coarse_agg + fine_agg
 
-# Display metrics in clean cards
-metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
+analysis_col1, analysis_col2, analysis_col3 = st.columns(3)
+with analysis_col1:
+    st.metric("Water-Cement Ratio", f"{wc_ratio:.3f}")
+with analysis_col2:
+    st.metric("Total Powder", f"{cement + blast_slag + fly_ash} kg/m³")
+with analysis_col3:
+    st.metric("Total Aggregate", f"{coarse_agg + fine_agg} kg/m³")
 
-with metric_col1:
-    st.metric("Water-Cement Ratio", f"{wc_ratio:.3f}", 
-              "Optimal" if 0.4 <= wc_ratio <= 0.5 else "Review")
-
-with metric_col2:
-    st.metric("Total Powder", f"{total_powder:,} kg/m³")
-
-with metric_col3:
-    st.metric("Total Aggregate", f"{total_aggregate:,} kg/m³")
-
-with metric_col4:
-    agg_ratio = coarse_agg / fine_agg if fine_agg > 0 else 0
-    st.metric("Aggregate Ratio", f"{agg_ratio:.2f}")
-
-# Instant feedback on water-cement ratio
-st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
-
+# Water-cement feedback
 if wc_ratio > 0.55:
-    st.warning("""
-    **⚠️ High Water-Cement Ratio Detected**
-    - Current ratio: **{:.3f}** (above 0.55)
-    - **Recommendation:** Reduce water content to improve strength
-    """.format(wc_ratio))
+    st.warning("⚠️ High water-cement ratio (>0.55) - May reduce strength")
 elif wc_ratio < 0.35:
-    st.info("""
-    **✅ Low Water-Cement Ratio**
-    - Current ratio: **{:.3f}** (below 0.35)
-    - **Good for strength**, check workability
-    """.format(wc_ratio))
+    st.info("✅ Low water-cement ratio - Good for strength")
 else:
-    st.success("""
-    **✅ Optimal Water-Cement Ratio**
-    - Current ratio: **{:.3f}** (0.35-0.55 range)
-    - **Ideal for balanced strength and workability**
-    """.format(wc_ratio))
+    st.success("✅ Optimal water-cement ratio (0.35-0.55)")
 
 # =============================================
-# PREDICTION SECTION
+# PREDICTION BUTTON - CENTERED
 # =============================================
-st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
-st.markdown("<h2 class='section-header'>AI Strength Prediction</h2>", unsafe_allow_html=True)
-
-# Centered prediction button
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
+st.markdown("---")
+predict_col1, predict_col2, predict_col3 = st.columns([1, 2, 1])
+with predict_col2:
     predict_clicked = st.button(
-        "**🚀 PREDICT CONCRETE STRENGTH**",
+        "🚀 **PREDICT CONCRETE STRENGTH**",
         type="primary",
         use_container_width=True,
-        help="Click to get AI-powered strength prediction"
+        help="Click for AI-powered prediction"
     )
 
 # =============================================
 # PREDICTION RESULTS
 # =============================================
 if predict_clicked and model is not None:
-    # Show loading state
-    with st.spinner('🤖 AI analyzing your concrete mix design...'):
-        time.sleep(0.8)
+    with st.spinner('🤖 AI analyzing your mix...'):
+        time.sleep(0.5)
         
-        # Prepare input data
+        # Prepare input
         input_data = pd.DataFrame([{
             'cement': cement,
             'blast_furnace_slag': blast_slag,
@@ -380,164 +260,84 @@ if predict_clicked and model is not None:
             'age': age
         }])
         
-        # Ensure correct column order
         input_data = input_data[feature_names]
-        
-        # Make prediction
         predicted_strength = model.predict(input_data)[0]
     
-    # Success animation
+    # Show results
     st.balloons()
     
-    st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
-    st.markdown("## 🎉 **Prediction Results**")
+    st.markdown("---")
+    st.markdown("## 🎉 Prediction Results")
     
-    # Display results in clean metrics
-    res_col1, res_col2, res_col3 = st.columns(3)
+    # Results in columns
+    result_col1, result_col2, result_col3 = st.columns(3)
     
-    with res_col1:
-        st.metric(
-            label="**Predicted Strength**",
-            value=f"{predicted_strength:.1f}",
-            delta="MPa",
-            delta_color="normal"
-        )
+    with result_col1:
+        st.metric("Predicted Strength", f"{predicted_strength:.1f} MPa")
     
-    with res_col2:
-        st.metric(
-            label="**Water-Cement Ratio**",
-            value=f"{wc_ratio:.3f}"
-        )
+    with result_col2:
+        st.metric("Water-Cement Ratio", f"{wc_ratio:.3f}")
     
-    with res_col3:
-        # Strength classification
+    with result_col3:
         if predicted_strength >= 50:
-            classification = "High-Strength"
-            use = "Structural"
-            color = "green"
+            st.metric("Classification", "High-Strength", "Structural")
         elif predicted_strength >= 35:
-            classification = "Standard"
-            use = "Commercial"
-            color = "blue"
+            st.metric("Classification", "Standard", "Commercial")
         elif predicted_strength >= 25:
-            classification = "Medium"
-            use = "Residential"
-            color = "orange"
+            st.metric("Classification", "Medium", "Residential")
         else:
-            classification = "Low"
-            use = "Non-structural"
-            color = "red"
-        
-        st.metric(
-            label="**Classification**",
-            value=classification,
-            delta=use
-        )
+            st.metric("Classification", "Low", "Non-structural")
     
     # Strength visualization
     st.progress(min(predicted_strength/80, 1.0))
-    st.caption(f"**Strength Scale:** 0-80 MPa | **Your Mix:** {predicted_strength:.1f} MPa")
+    st.caption(f"Strength Scale: 0-80 MPa | Your mix: {predicted_strength:.1f} MPa")
     
-    # Application recommendations
-    st.markdown("### 💡 **Recommended Applications**")
+    # Applications
+    st.markdown("### 💡 Recommended Applications")
     
-    app_col1, app_col2 = st.columns(2)
-    
-    with app_col1:
-        if predicted_strength >= 50:
-            st.success("""
-            **🏗️ HIGH-STRENGTH CONCRETE**
-            - Columns & beams
-            - Bridges & flyovers
-            - High-rise buildings
-            - Industrial floors
-            """)
-        elif predicted_strength >= 35:
-            st.info("""
-            **🏢 STANDARD CONCRETE**
-            - Commercial buildings
-            - Parking structures
-            - Office slabs
-            - Shopping malls
-            """)
-    
-    with app_col2:
-        if predicted_strength >= 25:
-            st.warning("""
-            **🏠 MEDIUM CONCRETE**
-            - Residential buildings
-            - House foundations
-            - Boundary walls
-            - Small structures
-            """)
-        else:
-            st.error("""
-            **🛠️ LOW STRENGTH**
-            - Non-structural elements
-            - Blinding concrete
-            - Landscaping
-            - Footpaths
-            """)
+    if predicted_strength >= 50:
+        st.success("**🏗️ High-Strength Concrete** - Columns, beams, bridges, high-rise buildings")
+    elif predicted_strength >= 35:
+        st.info("**🏢 Standard-Strength Concrete** - Commercial buildings, slabs, parking structures")
+    elif predicted_strength >= 25:
+        st.warning("**🏠 Medium-Strength Concrete** - Residential buildings, foundations, walls")
+    else:
+        st.error("**🛠️ Low-Strength Concrete** - Non-structural elements, blinding concrete")
     
     # Optimization suggestions
-    st.markdown("### 🔧 **Optimization Suggestions**")
-    st.markdown("<div class='info-box'>", unsafe_allow_html=True)
+    st.markdown("### 🔧 Optimization Suggestions")
     
     suggestions = []
     if wc_ratio > 0.55:
-        suggestions.append("**Reduce water by 10-15%** to improve strength")
+        suggestions.append("Reduce water content to improve strength")
     if cement < 250 and predicted_strength < 30:
-        suggestions.append("**Increase cement to 300+ kg/m³** for structural use")
+        suggestions.append("Increase cement content for structural applications")
     if blast_slag == 0 and fly_ash == 0:
-        suggestions.append("**Add supplementary materials** to improve durability")
-    if age < 28:
-        suggestions.append("**28-day strength** is standard for design purposes")
+        suggestions.append("Consider adding supplementary materials for durability")
     
     if suggestions:
-        st.markdown("**AI Recommendations:**")
         for suggestion in suggestions:
             st.markdown(f"• {suggestion}")
     else:
-        st.markdown("**✅ Your mix design appears well-optimized!**")
-    
-    st.markdown("</div>", unsafe_allow_html=True)
+        st.success("✅ Your mix design is well-optimized!")
 
 elif predict_clicked:
-    st.error("**❌ AI Model not loaded** - Please check model files")
+    st.error("❌ AI Model not loaded")
+
+# CLOSE MAIN CONTAINER
+st.markdown("</div>", unsafe_allow_html=True)
 
 # =============================================
-# FOOTER
+# FOOTER - SIMPLE
 # =============================================
-st.markdown("</div>", unsafe_allow_html=True)  # Close main-content
-
+st.markdown("---")
 st.markdown("""
-<div style='text-align: center; padding: 2.5rem; background: white; border-radius: 12px; margin-top: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);'>
-    <h3 style='color: #1e293b; margin-bottom: 1rem;'>🏛️ Ziauddin University Civil Engineering</h3>
-    <h4 style='color: #059669; margin-bottom: 1.5rem;'>🎪 Build Asia Expo 2026 | Karachi, Pakistan</h4>
-    
-    <div style='margin: 1.5rem 0;'>
-        <span class='uni-badge'>AI Accuracy: 87.6%</span>
-        <span class='expo-badge'>Error Margin: ±5.7 MPa</span>
-        <span class='uni-badge'>Trained on 1,030+ Samples</span>
-        <span class='expo-badge'>Random Forest Model</span>
-    </div>
-    
-    <hr style='margin: 2rem auto; width: 80%; opacity: 0.2;'>
-    
-    <p style='color: #64748b; font-size: 0.95rem; line-height: 1.6;'>
-        <strong>For Educational & Demonstration Purposes</strong><br>
-        Live AI Tool - No Installation Required | Works on Any Device
-    </p>
-    
-    <p style='color: #3b82f6; font-weight: 600; margin-top: 1rem;'>
-        🔗 <strong>Live URL:</strong> 
-        <a href='https://concrete-ai-zu-haiderak27.streamlit.app' style='color: #3b82f6; text-decoration: none;'>
-            concrete-ai-zu-haiderak27.streamlit.app
-        </a>
-    </p>
-    
-    <p style='color: #059669; font-weight: 600;'>
-        📱 <strong>Scan QR code to try on your phone</strong>
-    </p>
+<div style='text-align: center; padding: 1.5rem; color: #7f8c8d;'>
+    <h4>🏛️ Ziauddin University Civil Engineering Department</h4>
+    <p>🎪 Build Asia Expo 2026 | Karachi, Pakistan</p>
+    <p><strong>Live AI Tool - No Installation Required</strong></p>
+    <p>🔗 <a href='https://concrete-ai-zu-haiderak27.streamlit.app' style='color: #3498db;'>
+        concrete-ai-zu-haiderak27.streamlit.app
+    </a></p>
 </div>
 """, unsafe_allow_html=True)
